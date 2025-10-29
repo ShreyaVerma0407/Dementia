@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #ff9100; /* Light Blue */
+}
+
+.navbar-left {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-right .nav-link {
+  font-size: 16px;
+  color: gray;
+  text-decoration: none;
+}
+
+.navbar-right .nav-link.active {
+  color: black;
+}
