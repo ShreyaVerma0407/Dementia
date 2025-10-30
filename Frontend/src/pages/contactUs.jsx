@@ -178,7 +178,7 @@ const [errorMsg, setErrorMsg] = useState('');
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground" style={{ paddingTop: "300px" }}>
       {/* Navbar Placeholder */}
       <Navbar />
 

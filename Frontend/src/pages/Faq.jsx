@@ -10,6 +10,12 @@ const FAQ = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Add padding top to account for navbar height
+  const pageStyle = {
+    paddingTop: "60px",
+    width: "100%"
+  };
+
   const navigate = useNavigate();
 
   // Fetch FAQ JSON from public folder
@@ -50,7 +56,7 @@ const FAQ = () => {
   );
 
   return (
-    <div className={styles.container}>
+    <div className={styles.faqContainer} style={pageStyle}>
       <Navbar />
 
       <div className={styles.header}>

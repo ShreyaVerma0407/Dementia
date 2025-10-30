@@ -119,10 +119,10 @@ export default function Feedback() {
   const allReviews = [...userReviews, ...dummyReviews];
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#fef3c7", color: "#374151" }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "#fef3c7", color: "#374151", width: "100%", paddingTop: "100px" }}>
       <Navbar />
-
-      <div style={{ background: "linear-gradient(to right, #f97316, #f97316)", padding: "24px" }}>
+      <main style={{ width: "100%" }}>
+        <div style={{ background: "linear-gradient(to right, #f97316, #f97316)", padding: "24px", width: "100%" }}>
         <button
           style={{
             backgroundColor: "rgba(0,0,0,0.1)",
@@ -215,7 +215,7 @@ export default function Feedback() {
           </div>
         </div>
       </div>
-
+      </main>
       <Footer />
     </div>
   );

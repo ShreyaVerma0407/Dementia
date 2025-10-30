@@ -1,22 +1,48 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #ff9100; /* Light Blue */
+/* Key properties for sticking to the top */
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 1000; /* Ensures the navbar is above other content */
+width: 100%;
+background-color: #ff9100; /* Vibrant Orange */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+
+/* Base layout and styles */
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 30px;
+background-color: #ff9100 !important; /* Vibrant Orange */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+height: 60px;
 }
 
 .navbar-left {
-  font-size: 24px;
-  font-weight: bold;
+font-size: 24px;
+font-weight: 700; /* Changed to bold /
+color: #FFFFFF; / White text for contrast against orange background */
+}
+
+.navbar-right {
+display: flex;
+gap: 25px; /* Spacing between links */
 }
 
 .navbar-right .nav-link {
-  font-size: 16px;
-  color: gray;
-  text-decoration: none;
+font-size: 16px;
+color: #f0f0f0; /* Light gray for non-active links */
+text-decoration: none;
+padding: 5px 0;
+transition: color 0.3s ease;
+}
+
+.navbar-right .nav-link:hover {
+color: #FFFFFF; /* White on hover */
 }
 
 .navbar-right .nav-link.active {
-  color: black;
+color: #181824; /* Dark text for active link */
+font-weight: 600;
 }

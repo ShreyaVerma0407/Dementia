@@ -30,6 +30,12 @@ const FileText = (props) => (
 
 // Main Component
 const HelpDesk = () => {
+    // Style for page content to account for navbar
+    const pageStyle = {
+        paddingTop: "75px",
+        width: "100%"
+    };
+
     // 💡 FIX: Changed the 'navigate' placeholder function to actually change the URL.
     const navigate = (to) => { 
         console.log(`Navigating to: ${to}`);
@@ -73,6 +79,7 @@ const HelpDesk = () => {
                     min-height: 100vh;
                     display: flex;
                     flex-direction: column;
+                    padding-top: 60px;
                 }
 
                 /* --- Header Section --- */
