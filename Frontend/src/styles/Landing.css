@@ -1,0 +1,114 @@
+/* Wave background effect with vertical gradient */
+.landing-container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0D786C,
+#0F9D8A
+, rgb(230, 250, 245)); /* Dark at the top, white at the bottom */
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-container::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: url('https://www.transparenttextures.com/patterns/waves.png') repeat-x; /* Wave texture */
+  opacity: 0.2;
+  transform: rotate(180deg);
+}
+
+.left-side {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  opacity: 0; /* Start invisible */
+  animation: slide-in-left 1.5s forwards; /* Animation for sliding in */
+}
+
+.content {
+  text-align: center;
+  color: #fff;
+}
+
+.title {
+  font-size: 60px;
+  font-family: 'Alex Brush', cursive;
+}
+
+.memory-harbor {
+  font-size: 80px;
+  font-family: 'Alex Brush', cursive;
+  margin-top: 10px;
+}
+
+.description {
+  font-size: 18px;
+  color: #ffffff;
+  margin-top: 20px;
+  max-width: 600px;
+}
+
+.get-started-btn {
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-size: 18px;
+  background: linear-gradient(135deg, #0D786C, #0F9D8A); /* Gradient button */
+  border: 2px solid black; /* Black border */
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Black shadow */
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.get-started-btn:hover {
+    border: 2px solid black; /* Black border */
+  background: linear-gradient(135deg, #0F9D8A, #0D786C); /* Reverse gradient on hover */
+  transform: scale(1.05); /* Slightly enlarge the button */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
+}
+
+.right-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%); /* Start from the left */
+    opacity: 0; /* Initially invisible */
+  }
+  100% {
+    transform: translateX(0); /* End in the normal position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-container {
+    flex-direction: column;
+  }
+
+  .left-side, .right-side {
+    flex: 1 1 100%;
+  }
+
+  .title, .memory-harbor {
+    font-size: 40px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}

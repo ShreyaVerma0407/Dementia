@@ -1,48 +1,76 @@
-.navbar {
-/* Key properties for sticking to the top */
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-z-index: 1000; /* Ensures the navbar is above other content */
-width: 100%;
-background-color: #ff9100; /* Vibrant Orange */
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+/* Import Dancing Script font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
 
-/* Base layout and styles */
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 15px 30px;
-background-color: #ff9100 !important; /* Vibrant Orange */
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-height: 60px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px; /* Reduced height of navbar */
+  background: rgba(13, 120, 108, 0.6); /* Transparent background with RGB color */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px); /* Optional: Adds a blur effect to the background */
 }
 
 .navbar-left {
-font-size: 24px;
-font-weight: 700; /* Changed to bold /
-color: #FFFFFF; / White text for contrast against orange background */
+  display: flex;
+  align-items: center;
+  flex: 0 1 auto; /* Keep the animation and title on the left */
+}
+
+.navbar-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase; /* Make "MEMORYHARBOR" all capital */
+  margin-left: 10px; /* Reduced space between animation and title */
 }
 
 .navbar-right {
-display: flex;
-gap: 25px; /* Spacing between links */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
 }
 
-.navbar-right .nav-link {
-font-size: 16px;
-color: #f0f0f0; /* Light gray for non-active links */
-text-decoration: none;
-padding: 5px 0;
-transition: color 0.3s ease;
+.navbar-right ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar-right .nav-link:hover {
-color: #FFFFFF; /* White on hover */
+.navbar-right li {
+  margin: 0 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.navbar-right .nav-link.active {
-color: #181824; /* Dark text for active link */
-font-weight: 600;
+.navbar-right li:hover {
+  color: #0F9D8A; /* Highlight color on hover */
+}
+
+.navbar-right li:first-child {
+  margin-left: 0; /* Remove margin from the first item */
+}
+
+.navbar-right li:last-child {
+  margin-right: 0; /* Remove margin from the last item */
+}
+
+/* Styling for Link to remove blue color and underline */
+.navbar-right li a {
+  text-decoration: none;  /* Remove the underline */
+  color: white; /* Make the link text color the same as other list items */
+}
+
+.navbar-right li a:hover {
+  color: #0F9D8A; /* Apply the same hover color */
 }
