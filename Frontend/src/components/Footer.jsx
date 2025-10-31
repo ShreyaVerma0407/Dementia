@@ -1,35 +1,99 @@
-import React from "react";
-import styles from "../styles/Footer.module.css";
+import React, { useEffect, useState } from 'react';
+import Lottie from 'react-lottie';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import styles from '../styles/footer.module.css';
 
-export default function Footer() {
+const Footer = () => {
+  const [animationData, setAnimationData] = useState(null);
+
+  // Fetch the Lottie animation JSON file for the footer
+  useEffect(() => {
+    fetch('/animations/navbar.json') // Assuming navbar.json is available in the public folder
+      .then((response) => response.json())
+      .then((data) => {
+        setAnimationData(data);
+      })
+      .catch((error) => console.error('Error loading the animation:', error));
+  }, []);
+
+  // Default Lottie options for footer animation
+  const defaultOptions = {
+    loop: true,
+    autoplay: true, // Controls autoplay
+    animationData: animationData, // Uses the fetched animation data
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
+  if (!animationData) {
+    return <div>Loading...</div>; // Loading state while the animation JSON is being fetched
+  }
+
   return (
     <footer className={styles.footer}>
-      {/* Wave SVG */}
-      <div className={styles.wave}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 320"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="#ff6600"
-            fillOpacity="1"
-            d="M0,96L60,117.3C120,139,240,181,360,176C480,171,600,117,720,117.3C840,117,960,171,1080,181.3C1200,192,1320,160,1380,144L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-          ></path>
-          <path
-            fill="#ff8533"
-            fillOpacity="0.7"
-            d="M0,192L80,197.3C160,203,320,213,480,197.3C640,181,800,139,960,122.7C1120,107,1280,117,1360,122.7L1440,128L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
-          ></path>
-        </svg>
-      </div>
+      <div className={styles.container}>
+        {/* Left Column: Lottie Animation and Quote */}
+        <div className={styles.leftColumn}>
+          <Lottie options={defaultOptions} height={120} width={120} />
+          <p className={styles.quote}>“Caring for Memories, One Step at a Time”</p>
 
-      {/* Footer content */}
-      <div className={styles.footerContainer}>
-        <div className={styles.footerSection}>
-          <h3>Team Dementia </h3>
+          {/* Follow Us On Section */}
+          <div className={styles.socialSection}>
+            <p>Follow Us On</p>
+            <div className={styles.socialLinks}>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                <FontAwesomeIcon icon={faFacebook} size="2x" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                <FontAwesomeIcon icon={faInstagram} size="2x" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                <FontAwesomeIcon icon={faTwitter} size="2x" />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                <FontAwesomeIcon icon={faYoutube} size="2x" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Middle Column: Quick Links */}
+        <div className={styles.middleColumn}>
+          <h4 className={styles.columnTitle}>Quick Links</h4>
+          <ul className={styles.linksList}>
+            <li><a href="/" className={styles.link}>Home</a></li>
+            <li><a href="/helpdesk" className={styles.link}>HelpDesk</a></li>
+            <li><a href="/Games" className={styles.link}>Games</a></li>
+            <li><a href="/Calender" className={styles.link}>Calender</a></li>
+            <li><a href="/mood" className={styles.link}>Mood</a></li>
+          </ul>
+        </div>
+
+        {/* Right Column: Services */}
+        <div className={styles.rightColumn}>
+          <h4 className={styles.columnTitle}>Services</h4>
+          <ul className={styles.linksList}>
+            <li><a href="/pantry" className={styles.link}>Moodtracker</a></li>
+            <li><a href="/nutrilog" className={styles.link}>Remedy</a></li>
+            <li><a href="/calorifi" className={styles.link}>CaregiverConnect</a></li>
+            <li><a href="/emergency" className={styles.link}>Emergency</a></li>
+            <li><a href="/logout" className={styles.link}>Logout</a></li>
+          </ul>
         </div>
       </div>
+
+      <hr />
+
+      {/* Copyright Section */}
+      <div className={styles.footerBottom}>
+        <p>© 2025 MEMORYHARBOR. All Rights Reserved.</p>
+      </div>
+
+    
     </footer>
   );
-}
+};
+
+export default Footer;
